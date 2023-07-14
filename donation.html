@@ -27,7 +27,7 @@
                     <form class="row g-3 needs-validation" novalidate>
                         <section id="genral">
                             <label for="VariantSelector" class="form-label">Abholung oder Abgabe</label>
-                            <select class="form-select" id="VariantSelector" required>
+                            <select class="form-select" id="VariantSelector" required onchange="changeVisablityAddress()">
                                 <option selected disabled value="">Wählen sie Abholung oder Abgabe vor Ort</option>
                                 <option value="1">Abholung</option>
                                 <option value="2">Abgabe</option>
@@ -67,32 +67,32 @@
                                 Bitte wählen sie eine Option aus
                             </div>
                         </section>
-                        <section id="address">
+                        <section id="address" class="d-none">
                             <div class="row">
                                 <div class="col-lg-4">
                                     <label for="Street" class="form-label">Straße</label>
-                                    <input type="text" class="form-control" id="Street" required>
+                                    <input type="text" class="form-control" id="Street">
                                     <div class="invalid-feedback">
                                         muss angegeben werden
                                     </div>
                                 </div>
                                 <div class="col-lg-2">
                                     <label for="Housenumber" class="form-label">Hausnummer</label>
-                                    <input type="text" class="form-control" id="Housenumber" required>
+                                    <input type="text" class="form-control" id="Housenumber">
                                     <div class="invalid-feedback">
                                         muss angegeben werden
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <label for="City" class="form-label">Ortschaft</label>
-                                    <input type="text" class="form-control" id="City" required>
+                                    <input type="text" class="form-control" id="City">
                                     <div class="invalid-feedback">
                                         muss angegeben werden
                                     </div>
                                 </div>
                                 <div class="col-lg-2">
                                     <label for="PLZ" class="form-label">PLZ</label>
-                                    <input type="number" class="form-control" id="PLZ" required>
+                                    <input type="number" class="form-control" id="PLZ">
                                     <div class="invalid-feedback">
                                         muss angegeben werden
                                     </div>
