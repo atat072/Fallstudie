@@ -24,7 +24,7 @@
                     </nav>
                 </div>
                 <div class="col-lg-8 col-sm-12">
-                    <form class="row g-3 needs-validation" novalidate>
+                    <form class="row g-3">
                         <section id="genral">
                             <label for="VariantSelector" class="form-label">Abholung oder Abgabe</label>
                             <select class="form-select" id="VariantSelector" required onchange="changeVisablityAddress()">
@@ -32,9 +32,6 @@
                                 <option value="1">Abholung</option>
                                 <option value="2">Abgabe</option>
                             </select>
-                            <div class="invalid-feedback">
-                                Bitte wählen sie eine Option aus
-                            </div>
                             <label for="ClothTypeSelector" class="form-label">Art der Kleidung</label>
                             <select class="form-select" id="ClothTypeSelector" required>
                                 <option selected disabled value="">Wählen sie die Art der Kleidung aus</option>
@@ -44,18 +41,12 @@
                                 <option value="4">Oberteil</option>
                                 <option value="5">Unterwäsche</option>
                             </select>
-                            <div class="invalid-feedback">
-                                Bitte wählen sie eine Option aus
-                            </div>
                             <label for="AgeSelector" class="form-label">Kinder oder Erwachsene</label>
                             <select class="form-select" id="AgeSelector" required>
                                 <option selected disabled value="">Wählen sie aus ob es sich um Kleidung für Kinder oder Erwachsenne handelt</option>
                                 <option value="1">Kinder</option>
                                 <option value="2">Erwachsene</option>
                             </select>
-                            <div class="invalid-feedback">
-                                Bitte wählen sie eine Option aus
-                            </div>
                             <label for="LocationSelector" class="form-label">Kriesengebiet</label>
                             <select class="form-select" id="LocationSelector" required>
                                 <option selected disabled value="">Wählen sie aus in welches Kriesengebiet ihr Spende geschickt werden soll</option>
@@ -63,46 +54,76 @@
                                 <option value="2">Kriesengebiet 2</option>
                                 <option value="3">Kriesengebiet 3</option>
                             </select>
-                            <div class="invalid-feedback">
-                                Bitte wählen sie eine Option aus
-                            </div>
                         </section>
                         <section id="address" class="d-none">
                             <div class="row">
                                 <div class="col-lg-4">
                                     <label for="Street" class="form-label">Straße</label>
                                     <input type="text" class="form-control" id="Street">
-                                    <div class="invalid-feedback">
-                                        muss angegeben werden
-                                    </div>
                                 </div>
                                 <div class="col-lg-2">
                                     <label for="Housenumber" class="form-label">Hausnummer</label>
                                     <input type="text" class="form-control" id="Housenumber">
-                                    <div class="invalid-feedback">
-                                        muss angegeben werden
-                                    </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <label for="City" class="form-label">Ortschaft</label>
                                     <input type="text" class="form-control" id="City">
-                                    <div class="invalid-feedback">
-                                        muss angegeben werden
-                                    </div>
                                 </div>
                                 <div class="col-lg-2">
                                     <label for="PLZ" class="form-label">PLZ</label>
                                     <input type="number" class="form-control" id="PLZ">
-                                    <div class="invalid-feedback">
-                                        muss angegeben werden
-                                    </div>
                                 </div>
                             </div>
                         </section>
                         <section id="submit" class="my-4">
-                            <button class="btn btn-primary" type="submit">Submit form</button>
+                            <button class="btn btn-primary" type="submit">Daten eireichen</button>
                         </section>
                     </form>
+                    <section id="donationOverview" class="d-none">
+                        <h1>Spendenübersicht</h1>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Information</th>
+                                    <th scope="col">Ihre Angabe</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Abholung/Abgabe</td>
+                                    <td id="SelectedVariant"></td>
+                                </tr>
+                                <tr>
+                                    <td>Art der Kleidung</td>
+                                    <td id="SelectedClothType"></td>
+                                </tr>
+                                <tr>
+                                    <td>Kinder/Erwachsene</td>
+                                    <td id="SelectedAge"></td>
+                                </tr>
+                                <tr>
+                                    <td>Kriesengebiet</td>
+                                    <td id="SelectedLocation"></td>
+                                </tr>
+                                <tr class="address">
+                                    <td>Straße</td>
+                                    <td id="enteredStreet"></td>
+                                </tr>
+                                <tr class="address">
+                                    <td>Hausnummer</td>
+                                    <td id="enteredHuosenumber"></td>
+                                </tr>
+                                <tr class="address">
+                                    <td>Ortschaft</td>
+                                    <td id="enteredCity"></td>
+                                </tr>
+                                <tr class="address">
+                                    <td>PLZ</td>
+                                    <td id="enteredPLZ"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
                 </div>
             </div>
         </main>
