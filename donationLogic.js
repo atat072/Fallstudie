@@ -29,6 +29,12 @@ document.querySelector("form").onsubmit = function displayOverview (){
   const City = document.getElementById("City");
   const PLZ = document.getElementById("PLZ");
 
+  alert(PLZ.value.slice(0, 2));
+  if(PLZ.value.slice(0,2)!==17){
+    alert("Die Abholadresse liegt auserhalb unseres Einzugsgebietes");
+    return false;
+  }
+
   document.getElementById("genral").classList.add('d-none');
   document.getElementById("address").classList.add('d-none');
   document.getElementById("submit").classList.add('d-none');
