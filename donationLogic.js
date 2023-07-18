@@ -29,8 +29,7 @@ document.querySelector("form").onsubmit = function displayOverview (){
   const City = document.getElementById("City");
   const PLZ = document.getElementById("PLZ");
 
-  alert(PLZ.value.slice(0, 2));
-  if(PLZ.value.slice(0,2)!==17){
+  if(PLZ.value.slice(0,2)!=="17"&&VariantSelector.value==="1"){
     alert("Die Abholadresse liegt auserhalb unseres Einzugsgebietes");
     return false;
   }
@@ -57,4 +56,53 @@ document.querySelector("form").onsubmit = function displayOverview (){
     }
   }
   return false;
+}
+//go back to form
+function displayForm(){
+  document.getElementById("genral").classList.remove('d-none');
+  document.getElementById("address").classList.remove('d-none');
+  document.getElementById("submit").classList.remove('d-none');
+  document.getElementById("donationOverview").classList.add('d-none');
+  changeVisablityAddress();
+}
+//trasmit data
+async function sendDonationInfo(){
+  const VariantSelector = document.getElementById("VariantSelector");
+  const ClothTypeSelector = document.getElementById("ClothTypeSelector");
+  const AgeSelector = document.getElementById("AgeSelector");
+  const LocationSelector = document.getElementById("LocationSelector");
+  const Street = document.getElementById("Street");
+  const Housenumber = document.getElementById("Housenumber");
+  const City = document.getElementById("City");
+  const PLZ = document.getElementById("PLZ");
+
+  if(VariantSelector.value==="1"){
+    //replace donation.json with Server URL
+    let donation = new Donation(ClothTypeSelector.options[ClothTypeSelector.selectedIndex].text,AgeSelector.options[AgeSelector.selectedIndex].text,LocationSelector.options[LocationSelector.selectedIndex].text,Street.value,Housenumber.value,City.value,PLZ.value);
+    fetch("donation.json",{
+      method: "POST",
+      body: JSON.stringify(donation)
+    })
+  }else{
+    let donation = new Donation(ClothTypeSelector.options[ClothTypeSelector.selectedIndex].text,AgeSelector.options[AgeSelector.selectedIndex].text,LocationSelector.options[LocationSelector.selectedIndex].text,null,null,null,null);
+    fetch("donation.json",{
+      method: "POST",
+      body: JSON.stringify(donation)
+    })
+  }
+  alert("Spende erfolgreich");
+}
+//Donation class
+class Donation{
+  clothType;
+  age;
+  location;
+  address;
+
+  constructor(clothType, age, location, street, housenumber, city, plz){
+    this.clothType=clothType;
+    this.age=age;
+    this.location=location;
+    this.address=[street,housenumber,city,plz];
+  }
 }
